@@ -2,6 +2,7 @@ package com.javaex.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -17,6 +18,8 @@ import com.javaex.vo.PersonVo;
 public class PhoneController {
 
 	// 필드
+	@Autowired
+	private PhoneDao phoneDao;
 	// 생성자
 	// 메소드-gs
 	// 메소드-일반
@@ -27,7 +30,7 @@ public class PhoneController {
 		System.out.println("[PhoneController.list]");
 		
 		//Dao 사용
-		PhoneDao phoneDao = new PhoneDao();
+		//PhoneDao phoneDao = new PhoneDao();    @Autowired
 		
 		//Dao의 메소드로 데이터 가져오기
 		List<PersonVo> personList = phoneDao.getPersonList();
@@ -49,7 +52,7 @@ public class PhoneController {
 		return "/WEB-INF/views/writeForm.jsp";
 	}
 	
-	//http://localhost:8088/phonebook3/writeForm?name=정우성&hp=010-1111-1111&company=02-2222-2222
+	//http://localhost:8088/phonebook4/writeForm?name=정우성&hp=010-1111-1111&company=02-2222-2222
 	
 	//쓰기
 	/*
@@ -127,7 +130,7 @@ public class PhoneController {
       System.out.println(personVo);
       
       //Dao 사용
-      PhoneDao phoneDao = new PhoneDao();
+      //PhoneDao phoneDao = new PhoneDao();
       
       //Dao의 personInsert() 이용해서 데이터 저장
       int count = phoneDao.personInsert(personVo);
@@ -146,9 +149,9 @@ public class PhoneController {
 	public String read(@PathVariable("no") int boardNo) {
 		System.out.println("PathVariable [read]");
 		
-		//localhost:8088/phonebook3/board/read/1
-		//localhost:8088/phonebook3/board/read/2
-		//localhost:8088/phonebook3/board/read/100
+		//localhost:8088/phonebook4/board/read/1
+		//localhost:8088/phonebook4/board/read/2
+		//localhost:8088/phonebook4/board/read/100
 		
 		System.out.println(boardNo);
 		
@@ -173,7 +176,7 @@ public class PhoneController {
       System.out.println(no);
       
       //Dao 사용
-      PhoneDao phoneDao = new PhoneDao();
+      //PhoneDao phoneDao = new PhoneDao();
       
       //Dao의 personInsert() 이용해서 데이터 저장
       int count = phoneDao.personDelete(no);
@@ -188,7 +191,7 @@ public class PhoneController {
 		System.out.println("[PhoneController.updateForm]");
 		
 		//Dao 사용
-		PhoneDao phoneDao = new PhoneDao();
+		//PhoneDao phoneDao = new PhoneDao();
 		
 		//Dao의 메소드로 데이터 가져오기
 		PersonVo personVo = phoneDao.getPerson(personNo);
@@ -210,7 +213,7 @@ public class PhoneController {
       System.out.println(personVo);
       
       //Dao 사용
-      PhoneDao phoneDao = new PhoneDao();
+      //PhoneDao phoneDao = new PhoneDao();
       
       //Dao의 personUpdate() 이용해서 데이터 저장
       int count = phoneDao.personUpdate(personVo);
